@@ -7,6 +7,7 @@ export default function Login({ onLogin }: { onLogin: () => void }) {
     const [password, setPassword] = useState('');
     const [error, setError] = useState(false);
     const [isLocked, setIsLocked] = useState(true);
+    const [hasInteracted, setHasInteracted] = useState(false);
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -20,7 +21,15 @@ export default function Login({ onLogin }: { onLogin: () => void }) {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-black px-6 overflow-hidden relative selection:bg-neon-red selection:text-black">
+        <div
+            className="min-h-screen flex items-center justify-center bg-black px-6 overflow-hidden relative selection:bg-neon-red selection:text-black"
+            onClick={() => !hasInteracted && setHasInteracted(true)}
+            onTouchStart={() => !hasInteracted && setHasInteracted(true)}
+        >
+            {/* Global Interaction Layer (Invisible) */}
+            {!hasInteracted && (
+                <div className="absolute inset-0 z-[200] cursor-pointer" />
+            )}
             {/* High-End Background Lighting */}
             <div className="absolute inset-0 pointer-events-none">
                 <motion.div

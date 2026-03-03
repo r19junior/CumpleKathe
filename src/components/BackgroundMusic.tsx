@@ -41,19 +41,12 @@ export default function BackgroundMusic({ isAuthenticated }: BackgroundMusicProp
 
         const handleInteraction = () => {
             playCurrent();
-            // Remove listeners once audio starts successfully
-            const currentAudio = isAuthenticated ? dedicationAudioRef.current : loginAudioRef.current;
-            if (currentAudio && !currentAudio.paused) {
-                window.removeEventListener('click', handleInteraction);
-                window.removeEventListener('touchstart', handleInteraction);
-                window.removeEventListener('scroll', handleInteraction);
-            }
+            // We can try to remove listeners but sometimes it's better to keep some for 
+            // robustness if audio fails initially
         };
 
-        window.addEventListener('click', handleInteraction);
-        window.addEventListener('touchstart', handleInteraction);
-        window.addEventListener('scroll', handleInteraction);
-        window.addEventListener('keydown', handleInteraction);
+        const events = ['click', 'touchstart', 'scroll', 'keydown', 'mousedown', 'pointerdown'];
+        events.forEach(event => window.addEventListener(event, handleInteraction));
 
         playCurrent();
 
@@ -75,10 +68,7 @@ export default function BackgroundMusic({ isAuthenticated }: BackgroundMusicProp
         }
 
         return () => {
-            window.removeEventListener('click', handleInteraction);
-            window.removeEventListener('touchstart', handleInteraction);
-            window.removeEventListener('scroll', handleInteraction);
-            window.removeEventListener('keydown', handleInteraction);
+            events.forEach(event => window.removeEventListener(event, handleInteraction));
         };
     }, [isAuthenticated, isMuted]);
 
