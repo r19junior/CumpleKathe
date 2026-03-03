@@ -61,7 +61,7 @@ export default function FinalNote() {
             >
                 <div className="w-[1px] h-20 bg-gradient-to-b from-neon-red/50 to-transparent" />
                 <p className="text-white/20 text-[10px] uppercase tracking-[0.2em] font-mono text-center">
-                    eres muy importante para mi te quiero demasiado
+                    eres muy importante para mi,  te quiero demasiado
                 </p>
             </motion.div>
 
