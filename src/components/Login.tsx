@@ -12,7 +12,7 @@ export default function Login({ onLogin }: { onLogin: () => void }) {
         e.preventDefault();
         if (password === '040307') {
             setIsLocked(false);
-            setTimeout(onLogin, 1000);
+            setTimeout(onLogin, 1200);
         } else {
             setError(true);
             setTimeout(() => setError(false), 500);
@@ -20,67 +20,89 @@ export default function Login({ onLogin }: { onLogin: () => void }) {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-black px-4 overflow-hidden relative">
-            {/* Background Glows */}
-            <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-neon-red/10 rounded-full blur-[100px] animate-pulse" />
-            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-neon-red/5 rounded-full blur-[120px] animate-pulse delay-1000" />
+        <div className="min-h-screen flex items-center justify-center bg-black px-6 overflow-hidden relative selection:bg-neon-red selection:text-black">
+            {/* High-End Background Lighting */}
+            <div className="absolute inset-0 pointer-events-none">
+                <motion.div
+                    animate={{
+                        scale: [1, 1.2, 1],
+                        opacity: [0.1, 0.15, 0.1]
+                    }}
+                    transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+                    className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150vw] h-[150vw] bg-neon-red rounded-full blur-[200px]"
+                />
+            </div>
 
             <AnimatePresence>
                 {isLocked && (
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                        animate={{ opacity: 1, scale: 1, y: 0 }}
-                        exit={{ opacity: 0, scale: 1.1, filter: 'blur(20px)' }}
-                        transition={{ duration: 0.8, ease: "easeOut" }}
-                        className="w-full max-w-md relative z-10"
+                        initial={{ opacity: 0, scale: 0.98, filter: 'blur(10px)' }}
+                        animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+                        exit={{ opacity: 0, scale: 1.05, filter: 'blur(30px)' }}
+                        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+                        className="w-full max-w-lg relative z-10"
                     >
-                        <div className="bg-glass-neon p-8 rounded-3xl border-2 border-neon-red/20 shadow-neon">
+                        <div className="bg-glass-neon p-8 md:p-16 rounded-[2.5rem] md:rounded-[3rem] border border-white/10 shadow-neon-strong backdrop-blur-3xl">
                             <motion.div
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ delay: 0.3 }}
-                                className="flex justify-center mb-6"
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.5, duration: 1 }}
+                                className="flex justify-center mb-8 md:mb-10"
                             >
-                                <div className="p-4 bg-neon-red/10 rounded-2xl border border-neon-red/30 shadow-neon">
-                                    <Heart className="w-12 h-12 text-neon-red animate-pulse" />
+                                <div className="p-4 md:p-6 bg-neon-red/5 rounded-2xl md:rounded-3xl border border-neon-red/20 relative group overflow-hidden">
+                                    <div className="absolute inset-0 bg-neon-red/10 blur-xl group-hover:bg-neon-red/20 transition-colors" />
+                                    <Heart className="w-12 h-12 md:w-16 md:h-16 text-neon-red relative z-10 animate-neon-pulse" />
                                 </div>
                             </motion.div>
 
-                            <h1 className="text-4xl md:text-5xl font-black text-center mb-2 tracking-tighter text-neon">
-                                KATHE
-                            </h1>
-                            <p className="text-xl text-center text-neon-red/80 font-medium mb-10">
-                                ¡Feliz Cumpleaños!
-                            </p>
+                            <motion.div
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.7 }}
+                                className="text-center mb-10 md:mb-12"
+                            >
+                                <h1 className="text-4xl md:text-7xl font-black mb-2 md:mb-3 tracking-tighter text-neon bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60">
+                                    KATHE
+                                </h1>
+                                <p className="text-[10px] md:text-sm font-mono tracking-[0.4em] uppercase text-neon-red/60 font-semibold">
+                                    Acceso Requerido
+                                </p>
+                            </motion.div>
 
-                            <form onSubmit={handleSubmit} className="space-y-6">
+                            <form onSubmit={handleSubmit} className="space-y-8">
                                 <div className="relative group">
-                                    <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-neon-red/50 group-focus-within:text-neon-red transition-colors" />
+                                    <Lock className="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 text-white/20 group-focus-within:text-neon-red transition-all duration-500" />
                                     <input
                                         type="password"
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
-                                        placeholder="Ingresa la clave..."
+                                        placeholder="CONTRASEÑA"
                                         className={cn(
-                                            "w-full bg-black/50 border-2 border-neon-red/20 rounded-2xl py-4 pl-12 pr-4 text-white placeholder:text-white/20 focus:outline-none focus:border-neon-red/50 focus:shadow-neon transition-all duration-300",
+                                            "w-full bg-white/5 border border-white/10 rounded-2xl py-5 pl-14 pr-4 text-white placeholder:text-white/10 focus:outline-none focus:border-neon-red/50 focus:bg-white/10 transition-all duration-500 font-mono tracking-[0.3em] uppercase text-xs md:text-sm",
                                             error && "border-red-500 animate-shake"
                                         )}
                                     />
                                 </div>
 
                                 <motion.button
-                                    whileHover={{ scale: 1.02, boxShadow: "0 0 20px #ff003c" }}
-                                    whileTap={{ scale: 0.98 }}
+                                    whileHover={{ scale: 1.01, backgroundColor: "rgba(255, 0, 60, 1)", color: "#000" }}
+                                    whileTap={{ scale: 0.99 }}
                                     type="submit"
-                                    className="w-full bg-neon-red text-black font-black text-lg py-4 rounded-2xl flex items-center justify-center gap-2 hover:bg-white transition-all duration-300 group shadow-neon-strong"
+                                    className="w-full bg-neon-red/90 text-black font-black text-sm md:text-base py-5 rounded-2xl flex items-center justify-center gap-3 transition-all duration-500 group shadow-neon uppercase tracking-[0.2em]"
                                 >
-                                    ENTRAR <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                                    AUTENTICAR <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform duration-500" />
                                 </motion.button>
                             </form>
 
-                            <p className="mt-8 text-center text-white/30 text-xs font-mono tracking-widest uppercase">
-                                Talvez no pude ser la fuente que te de vida, pero si quiero ser la resistencia que te permita estar viva
-                            </p>
+                            <motion.p
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 0.3 }}
+                                transition={{ delay: 1 }}
+                                className="mt-12 text-center text-white text-[9px] font-mono tracking-[0.3em] uppercase leading-loose border-t border-white/5 pt-8"
+                            >
+                                Talvez no pude ser la fuente que te de vida, <br />
+                                pero si quiero ser la resistencia que te permita estar viva
+                            </motion.p>
                         </div>
                     </motion.div>
                 )}
@@ -90,13 +112,14 @@ export default function Login({ onLogin }: { onLogin: () => void }) {
                 __html: `
         @keyframes shake {
           0%, 100% { transform: translateX(0); }
-          25% { transform: translateX(-5px); }
-          75% { transform: translateX(5px); }
+          25% { transform: translateX(-6px); }
+          75% { transform: translateX(6px); }
         }
         .animate-shake {
-          animation: shake 0.2s ease-in-out infinite;
+          animation: shake 0.25s cubic-bezier(.36,.07,.19,.97) both;
         }
       `}} />
         </div>
     );
 }
+

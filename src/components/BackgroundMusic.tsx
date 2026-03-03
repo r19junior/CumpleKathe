@@ -39,39 +39,52 @@ export default function BackgroundMusic({ isAuthenticated }: BackgroundMusicProp
     };
 
     useEffect(() => {
-        if (loginAudioRef.current) loginAudioRef.current.volume = 1;
-        if (dedicationAudioRef.current) dedicationAudioRef.current.volume = 1;
+        if (loginAudioRef.current) loginAudioRef.current.volume = 0.8;
+        if (dedicationAudioRef.current) dedicationAudioRef.current.volume = 0.8;
 
         const handleInteraction = () => {
             playCurrent();
+            // Remove listeners once audio starts successfully
+            const currentAudio = isAuthenticated ? dedicationAudioRef.current : loginAudioRef.current;
+            if (currentAudio && !currentAudio.paused) {
+                window.removeEventListener('click', handleInteraction);
+                window.removeEventListener('touchstart', handleInteraction);
+                window.removeEventListener('scroll', handleInteraction);
+            }
         };
 
         window.addEventListener('click', handleInteraction);
+        window.addEventListener('touchstart', handleInteraction);
+        window.addEventListener('scroll', handleInteraction);
         window.addEventListener('keydown', handleInteraction);
 
         playCurrent();
 
-        if (!isMuted) {
-            if (!isAuthenticated) {
-                if (dedicationAudioRef.current) {
-                    dedicationAudioRef.current.pause();
-                    dedicationAudioRef.current.currentTime = 0;
-                }
-                playCurrent();
-            } else {
-                if (loginAudioRef.current) {
-                    loginAudioRef.current.pause();
-                    loginAudioRef.current.currentTime = 10;
-                }
-                playCurrent();
+        if (isAuthenticated) {
+            if (loginAudioRef.current) {
+                loginAudioRef.current.pause();
+                loginAudioRef.current.currentTime = 10;
+            }
+            if (dedicationAudioRef.current) {
+                dedicationAudioRef.current.play().catch(() => { });
             }
         } else {
-            loginAudioRef.current?.pause();
-            dedicationAudioRef.current?.pause();
+            if (dedicationAudioRef.current) {
+                dedicationAudioRef.current.pause();
+                dedicationAudioRef.current.currentTime = 0;
+            }
+            if (loginAudioRef.current) {
+                if (loginAudioRef.current.currentTime < 10) {
+                    loginAudioRef.current.currentTime = 10;
+                }
+                loginAudioRef.current.play().catch(() => { });
+            }
         }
 
         return () => {
             window.removeEventListener('click', handleInteraction);
+            window.removeEventListener('touchstart', handleInteraction);
+            window.removeEventListener('scroll', handleInteraction);
             window.removeEventListener('keydown', handleInteraction);
         };
     }, [isAuthenticated, isMuted]);
