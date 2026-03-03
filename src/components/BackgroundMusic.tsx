@@ -32,10 +32,7 @@ export default function BackgroundMusic({ isAuthenticated }: BackgroundMusicProp
     };
 
     const handleLoadedMetadata = (e: React.SyntheticEvent<HTMLAudioElement>) => {
-        const audio = e.currentTarget;
-        if (audio === loginAudioRef.current && audio.currentTime < 10 && !isAuthenticated) {
-            audio.currentTime = 10;
-        }
+        // Music now starts from the beginning as requested
     };
 
     useEffect(() => {
@@ -63,7 +60,6 @@ export default function BackgroundMusic({ isAuthenticated }: BackgroundMusicProp
         if (isAuthenticated) {
             if (loginAudioRef.current) {
                 loginAudioRef.current.pause();
-                loginAudioRef.current.currentTime = 10;
             }
             if (dedicationAudioRef.current) {
                 dedicationAudioRef.current.play().catch(() => { });
@@ -74,9 +70,6 @@ export default function BackgroundMusic({ isAuthenticated }: BackgroundMusicProp
                 dedicationAudioRef.current.currentTime = 0;
             }
             if (loginAudioRef.current) {
-                if (loginAudioRef.current.currentTime < 10) {
-                    loginAudioRef.current.currentTime = 10;
-                }
                 loginAudioRef.current.play().catch(() => { });
             }
         }
@@ -98,7 +91,7 @@ export default function BackgroundMusic({ isAuthenticated }: BackgroundMusicProp
         <>
             <audio
                 ref={loginAudioRef}
-                src="/music/enigmatica.mp3"
+                src="/videos/enigmatica.mp3"
                 loop
                 preload="auto"
                 onLoadedMetadata={handleLoadedMetadata}

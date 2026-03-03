@@ -61,11 +61,11 @@ export default function Login({ onLogin }: { onLogin: () => void }) {
                                 transition={{ delay: 0.7 }}
                                 className="text-center mb-10 md:mb-12"
                             >
-                                <h1 className="text-4xl md:text-7xl font-black mb-2 md:mb-3 tracking-tighter text-neon bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60">
+                                <h1 className="text-4xl md:text-7xl font-black mb-2 md:mb-3 tracking-tighter text-neon bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60 animate-flicker">
                                     KATHE
                                 </h1>
-                                <p className="text-[10px] md:text-sm font-mono tracking-[0.4em] uppercase text-neon-red/60 font-semibold">
-                                    Acceso Requerido
+                                <p className="text-[10px] md:text-sm font-mono tracking-[0.4em] uppercase text-neon-red/60 font-semibold animate-flicker">
+                                    te tengo una sorpresa
                                 </p>
                             </motion.div>
 
@@ -117,6 +117,9 @@ export default function Login({ onLogin }: { onLogin: () => void }) {
         }
         .animate-shake {
           animation: shake 0.25s cubic-bezier(.36,.07,.19,.97) both;
+        }
+        .animate-flicker {
+          animation: flicker 3s linear infinite;
         }
       `}} />
         </div>
