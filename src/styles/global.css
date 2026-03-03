@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@theme {
+  --color-neon-red: #ff003c;
+  --color-neon-red-glow: #ff003c;
+  
+  --shadow-neon: 0 0 5px var(--color-neon-red), 0 0 20px var(--color-neon-red);
+  --shadow-neon-strong: 0 0 10px var(--color-neon-red), 0 0 40px var(--color-neon-red), 0 0 80px var(--color-neon-red);
+  
+  --animate-neon-pulse: neon-pulse 2s ease-in-out infinite;
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes neon-pulse {
+    0%, 100% { opacity: 1; filter: drop-shadow(0 0 5px #ff003c); }
+    50% { opacity: 0.8; filter: drop-shadow(0 0 15px #ff003c); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-black text-white selection:bg-neon-red selection:text-black overflow-x-hidden;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
+
+@layer utilities {
+  .text-neon {
+    text-shadow: 0 0 5px #ff003c, 0 0 10px #ff003c, 0 0 20px #ff003c;
+  }
+  
+  .border-neon {
+    box-shadow: 0 0 5px #ff003c, inset 0 0 5px #ff003c;
+    border-color: #ff003c;
+  }
+
+  .bg-glass {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10;
+  }
+  
+  .bg-glass-neon {
+    @apply bg-black/40 backdrop-blur-2xl border border-neon-red/30;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-black;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-neon-red/50 rounded-full hover:bg-neon-red;
+}
