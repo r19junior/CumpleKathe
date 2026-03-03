@@ -91,7 +91,7 @@ export default function BackgroundMusic({ isAuthenticated }: BackgroundMusicProp
         <>
             <audio
                 ref={loginAudioRef}
-                src="/videos/enigmatica.mp3"
+                src="/music/enigmatica.mp3"
                 loop
                 preload="auto"
                 onLoadedMetadata={handleLoadedMetadata}

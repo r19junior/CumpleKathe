@@ -40,13 +40,13 @@ export default function VideoGallery() {
                             playsInline
                             className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-700" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-60 transition-opacity duration-700" />
 
-                        <div className="absolute bottom-6 md:bottom-10 left-0 w-full px-6 md:px-8 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-500 transform translate-y-0 md:translate-y-4 md:group-hover:translate-y-0">
-                            <h3 className="text-neon-red font-black text-2xl uppercase tracking-widest mb-2 drop-shadow-lg">
+                        <div className="absolute bottom-0 left-0 w-full p-6 md:p-10 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-500 transform translate-y-0 md:translate-y-4 md:group-hover:translate-y-0 z-10 bg-gradient-to-t from-black via-black/80 to-transparent md:bg-none backdrop-blur-[2px] md:backdrop-blur-none">
+                            <h3 className="text-neon-red font-black text-xl md:text-2xl uppercase tracking-widest mb-1 md:mb-2 drop-shadow-[0_2px_10px_rgba(255,0,60,0.5)]">
                                 {video.title}
                             </h3>
-                            <p className="text-white/80 text-sm font-medium italic leading-relaxed">
+                            <p className="text-white/90 text-xs md:text-sm font-medium italic leading-relaxed">
                                 {video.description}
                             </p>
                         </div>
