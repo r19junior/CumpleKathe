@@ -33,9 +33,7 @@ export default function FinalNote() {
 
             <div className="max-w-3xl mx-auto mb-20 px-6">
                 <p className="text-white/60 text-base md:text-xl font-light leading-relaxed italic mb-12">
-                    "Que este nuevo año de vida sea brillante y extraordinario como lo eres tú.
-                    Gracias por permitirme compartir tus días, hare una y mil cosas porque tu estés feliz
-                    y estés feliz conmigo en serio prometo no fallarte"
+                    "Que este nuevo año sea tan brillante y extraordinario como lo es tu luz. Gracias por el regalo de dejarme caminar a tu lado y compartir tus días. Mi mayor proyecto eres tú: me dedicaré a inventar mil formas de verte sonreír. Si decides ser feliz conmigo, te prometo que cuidaré tu corazón como el tesoro más grande, sin fallarte nunca."
                 </p>
                 <motion.div
                     initial={{ opacity: 0, y: 10 }}

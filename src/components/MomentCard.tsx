@@ -3,12 +3,13 @@ import { motion } from 'framer-motion';
 import { Quote } from 'lucide-react';
 
 interface MomentCardProps {
+    title: string;
     text: string;
     img: string;
     index: number;
 }
 
-export default function MomentCard({ text, img, index }: MomentCardProps) {
+export default function MomentCard({ title, text, img, index }: MomentCardProps) {
     const isEven = index % 2 === 0;
 
     return (
@@ -32,7 +33,7 @@ export default function MomentCard({ text, img, index }: MomentCardProps) {
                     </p>
                     <div className="flex items-center gap-6">
                         <div className="h-[1px] w-12 md:w-16 bg-neon-red/30 shadow-neon" />
-                        <span className="text-neon-red/50 font-mono text-[10px] md:text-xs tracking-[0.4em] uppercase">Fragmento {index + 1}</span>
+                        <span className="text-neon-red font-black text-[10px] md:text-sm tracking-[0.2em] uppercase italic">{title}</span>
                     </div>
                 </motion.div>
             </div>

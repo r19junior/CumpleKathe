@@ -6,27 +6,33 @@ import FinalNote from './FinalNote';
 
 const dedicationData = [
     {
-        text: "Hoy no es un día común, es el día en que el mundo se volvió un lugar increíblemente mejor gracias a tu llegada. Feliz cumpleaños, Kathe.",
+        title: "El Amanecer",
+        text: "Hoy no es solo una fecha en el calendario, es el aniversario del instante en que el mundo decidió hacerse más bello. Kathe, me iluminas cada día; eres esa luz suave que entra por la ventana y me recuerda que, mientras estés tú, no existe la oscuridad. Eres el centro de mi propia gravedad.",
         img: "/img/noche.jpeg"
     },
     {
-        text: "Quiero que sepas que eres una persona de luz, alguien que con su simple presencia ilumina cualquier habitación. He creado este rincón digital para que nunca olvides lo especial que eres.",
+        title: "El Pensamiento",
+        text: "He creado este rincón porque el silencio no me basta para decirte lo que siento. Kathe, eres lo que pienso cada día; habitas mi mente como una canción que no quiero que termine nunca. Cada píxel y cada palabra aquí son solo un intento de capturar la maravilla que es tenerte en mis pensamientos.",
         img: "/img/polleria.jpeg"
     },
     {
-        text: "Tu fuerza, tu sonrisa y la forma en que ves la vida son cosas que admiro profundamente. Mereces un año lleno de magia, de sueños cumplidos y de momentos que te dejen sin aliento.",
+        title: "El Tiempo",
+        text: "El tiempo es el regalo más valioso que poseemos, y el mío solo cobra sentido cuando lo gasto a tu lado. Kathe, me gusta pasar tiempo contigo, porque en tu compañía los minutos dejan de correr y se convierten en recuerdos. Admiro tu fuerza y esa forma tan tuya de abrazar la vida; mereces un año donde cada sueño te alcance.",
         img: "/img/parque.jpeg"
     },
     {
-        text: "Esta página es solo un pequeño tributo a la gran mujer que eres. Gracias por ser tú, por tu autenticidad y por dejarme ser parte de tu historia.",
+        title: "La Confesión",
+        text: "Hay verdades que el corazón ya no puede guardar bajo llave. Kathe, me enamoré de ti, de tu autenticidad, de tus silencios y de tu risa. Este tributo es pequeño comparado con la mujer gigante que eres. Gracias por dejarme ser una nota al pie en tu historia, o mejor aún, un verso en tu poema.",
         img: "/img/yanahuara.jpeg"
     },
     {
-        text: "Disfruta tu día al máximo, rodeada de amor y de todas esas cosas que te hacen feliz. ¡Te deseo lo mejor hoy y siempre!",
+        title: "La Promesa",
+        text: "Mi compromiso no es de un momento, es de una vida entera. Kathe, te acompañaré hasta que deje de existir, caminando a tu paso, celebrando tus triunfos y sosteniéndote en las tormentas. Disfruta tu día rodeada de todo el amor que has sembrado, que es infinito.",
         img: "/img/univerisdad.jpeg"
     },
     {
-        text: "Que cada pétalo de estas flores represente un deseo cumplido y un motivo para sonreír. Eres hermosa por dentro y por fuera.",
+        title: "La Belleza",
+        text: "Dicen que la belleza es pasajera, pero la tuya —la que llevas por dentro y por fuera— es eterna. Que este nuevo ciclo sea un jardín de deseos cumplidos. Eres mi motivo para sonreír y la razón por la que hoy el universo se siente en perfecta armonía.",
         img: "/img/flores.jpeg"
     }
 ];
@@ -52,6 +58,7 @@ export default function Dedication() {
                     {dedicationData.map((item, index) => (
                         <MomentCard
                             key={index}
+                            title={item.title}
                             text={item.text}
                             img={item.img}
                             index={index}
