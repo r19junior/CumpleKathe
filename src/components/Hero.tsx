@@ -22,10 +22,10 @@ export default function Hero() {
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1.2, ease: "easeOut" }}
-                className="text-5xl sm:text-7xl md:text-[10rem] lg:text-[12rem] font-black mb-8 tracking-tighter leading-[0.85]"
+                className="text-4xl sm:text-6xl md:text-[8rem] lg:text-[10rem] font-black mb-8 tracking-tighter leading-[0.85]"
             >
-                HISTORIAS <br />
-                <span className="text-neon italic bg-clip-text">CON KATHE</span>
+                GRACIAS POR DEJARME <br />
+                <span className="text-neon italic bg-clip-text uppercase">ENTRAR A TU HISTORIA</span>
             </motion.h2>
 
             <motion.div
