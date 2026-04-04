@@ -48,7 +48,7 @@ export default function FinalNote() {
                         TE COMENTO QUE ES MI NÚMERO FAVORITO
                     </p>
                     <p className="text-white/60 text-sm md:text-base font-medium italic leading-relaxed max-w-lg mx-auto">
-                        atte Juan Rodrigo tu enamorado que te quiere demasiado cada día más
+                        atte Juan Rodrigo tu enamorado que te ama demasiado cada día más
                     </p>
                 </motion.div>
             </div>
@@ -61,7 +61,7 @@ export default function FinalNote() {
             >
                 <div className="w-[1px] h-20 bg-gradient-to-b from-neon-red/50 to-transparent" />
                 <p className="text-white/20 text-[10px] uppercase tracking-[0.2em] font-mono text-center">
-                    eres muy importante para mi,  te quiero demasiado
+                    eres muy importante para mi,  te amo demasiado
                 </p>
             </motion.div>
 
